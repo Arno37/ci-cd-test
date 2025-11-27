@@ -1,0 +1,23 @@
+name: Validation CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  verifier_code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Installer Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        
+    - name: Installer les dépendances (ici, pas nécessaire pour cet exercice)
+      run: echo "Dépendances installées"
+
+    - name: Lancer les tests
+      run: python -m pytest test_app.py
